@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { gql } from '@apollo/client';
 
 const localGraphQL = "https://dr2md.sse.codesandbox.io/";
 
