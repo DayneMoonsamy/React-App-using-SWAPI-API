@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/client/react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { gql } from '@apollo/client';
 
-const localGraphQL = "http://localhost:4000/graphql";
+const localGraphQL = "https://dr2md.sse.codesandbox.io/";
 
 const client = new ApolloClient({
   uri: localGraphQL,
