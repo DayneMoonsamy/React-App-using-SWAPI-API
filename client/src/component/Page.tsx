@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "./App.css";
+import ".././App.css";
 import {useQuery, gql} from '@apollo/client'
 import {Card, Grid, Pagination} from 'semantic-ui-react';
-import logo from './ori_3501424_df45d13cbadfc482c5422208a63e6f124ccab987_halloween-christmas-star-war-logo-vector-cricut-and-silhouette.jpg'
+import logo from '.././ori_3501424_df45d13cbadfc482c5422208a63e6f124ccab987_halloween-christmas-star-war-logo-vector-cricut-and-silhouette.jpg'
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
-import People from "./component/People"
-import Page from "./component/Page"
+import People from "./People"
 
-const query = gql`{
-  getPage(id:1)
+const query = gql`
+query GetPage($input: Int) {
+  getPage(id:$input)
   {
     count,
     results
@@ -24,19 +24,21 @@ const query = gql`{
 }
 `;
 
-function App() {
+function Page({state}:{state:any}) {
+    console.log(typeof state)
   const [name, setName] = useState<any | null>(null);
-  const [page, setPage] = useState<any | null>(null);
-  const {loading, error, data} = useQuery(query);
+  const [page, setPage] = useState(state);
+  const { loading, data, error } = useQuery(query, {
+    variables: { input: page},
+  });
   if(loading)
    return <p> Loading ...</p>
   if(error) return <p>Error</p>
-  let x = Math.ceil((data.getPage.count)/10) 
   return (
     <>
    <Router>
     <Switch>
-   <Route exact path="/">
+   <Route exact path="/component/Page">
     <div className="App">
       <header className="App-header">
               <img src={logo} alt="Logo" width="30%"/>
@@ -73,24 +75,24 @@ function App() {
     <Link to={{pathname: "/component/Page", state: {name: page}}}>
     <Pagination 
       inverted 
-      defaultActivePage={1} 
-      totalPages= {x} 
+      defaultActivePage={page} 
+      totalPages={Math.ceil((data.getPage.count)/10)} 
       onPageChange={(event, data) => setPage(data.activePage)}
       />
       </Link>
-<br/> <br/> <br/>
+    <br/> <br/> <br/>
     </div>    
-    </Route>
+    </Route> 
     <Route path="/people">
       <People state={name}/>
     </Route>
     <Route path="/component/Page">
       <Page state={page}/>
-    </Route>
+    </Route>  
     </Switch>
     </Router>
    </>
   )
 }
 
-export default App;
+export default Page;
