@@ -1,10 +1,30 @@
 .App {
   text-align: center;
+  background-color: black;
+
+}
+
+.card
+{
+  text-align: center;
+  border-color: coral;
+  font-size: calc(4px + 2vmin);
+  color: white;
+  background-color: blue;
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
+  background-color: yellow;
+}
+
+.grid
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -13,15 +33,49 @@
   }
 }
 
+#wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* add this to contain floated children */
+  align-items: center;
+  display: flex;
+  background-color: black;
+  min-height: 1400px;
+}
+
+#first {
+  flex: 1;
+  width: 50%;
+  height: 100%;
+  float:left; /* add this */
+  background-color: black;
+}
+#second {
+  flex: 1;
+  background-color: black;
+  width: 50%;
+  height: 100%;
+  float: left; /* add this */
+}
+
+#Back
+{
+  font-family: tahoma;
+  position:absolute;
+  top: 32px;
+  left:36px;
+  /* left: 32px */
+}
+
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(14px + 2vmin);
+  color: "#FFE81F";
+  padding: 20px
 }
 
 .App-link {
