@@ -9,7 +9,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const typeDefs = gql`
   type Query {
     hello(name: String): String!
-    getPage(id: Int!): Result
+    getPage(id: Int): Result
     getPerson(person: String!): Detail
   }
 
@@ -17,6 +17,10 @@ const typeDefs = gql`
     count: Int
     next: String
     results: [People]
+  }
+
+  input UserInput {
+    id: Int
   }
 
   type Detail {
@@ -124,21 +128,7 @@ const resolvers = {
   }
 };
 
-// app.get("/api", (req, res) => {
-//     res.json({ message: "Hello from server!" });
-//   });
-
 const server = new ApolloServer({ typeDefs, resolvers });
-
-// The `listen` method launches a web server.
-// server.listen().then(({ url }) => {
-// console.log(`🚀  Server ready at ${url}`);
-// });
-
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+  console.log(`Server ready at ${url}`);
 });
-
-// app.listen(PORT, () => {
-// console.log(`Server listening on ${PORT}`);
-// });
