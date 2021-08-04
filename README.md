@@ -1,5 +1,8 @@
-# fulllstack-SWAPI
-Test for SWAPI
+# FullStack - SWAPI
+
+React app to learn basic functionality.
+This app displays basic names from the SWAPI API and expands on details when clicked on.
+Includes cards, pagenation as well as a custom front and back end.
 
 # StarWars API app
 
